@@ -1,54 +1,19 @@
-import random
-import time
-from datetime import datetime
+Uber Fare Simulator in Python
+This Python script simulates an Uber ride request, allowing users to enter their desired travel distance and choose between UberBlack or UberX. The program calculates the estimated fare based on distance, ride type, and time-based price adjustments.
 
-Distmotorista = random.uniform(1, 5)
-
-print("Ola, seja bem vindo ao Uber")
-
-print()
-
-while True:
-    try:
-        Distancia = float(input("Qual a distancia que deseja percorrer?(Em km): "))
-        break
-    except ValueError:
-        print("Erro! Por favor, digite um número válido.")
-
-print()
-
-opção = input("UberBlack ou UberX(B ou X): ").strip().lower()
-if opção == "b":
-   valor = Distancia * random.uniform(2.5, 3)
-else:
-   valor = Distancia * random.uniform(1.5, 2)
-
-horario = datetime.now().strftime("%H:%M")
-
-if horario < "12:00":
-    valor -= 5
-elif horario < "18:00":
-    valor += 5
-else:
-    valor += 10
-
-tempo = Distmotorista * 1.5
-
-print(f"O valor da sua viagem sera de {round(valor)}R$")
-
-print()
-
-print("aguarde...", end="\r")
-time.sleep(2)
-print(" " * 25, end="\r")
-
-print(f"Ira demorar {tempo:.0f} minutos para o motorista chegar")
-
-print()
-
-time.sleep(1)
-
-print("=-=" * 9)
-print("\033[1;32mObrigado pela preferência!\033[m")
-print("=-=" * 9)
-print()
+How It Works:
+The user inputs the trip distance (km).
+The user selects UberBlack (B) or UberX (X).
+The fare is calculated with a random multiplier depending on the ride type.
+Time-based fare adjustments are applied:
+Morning (before 12:00) → Discount of 5
+Afternoon (before 18:00) → Increase of 5
+Night (after 18:00) → Increase of 10
+A random driver distance is generated to estimate arrival time.
+The program simulates waiting time before displaying the estimated driver arrival.
+The user receives a thank you message at the end.
+Features:
+✅ Random pricing simulation for more realistic results.
+✅ Dynamic driver arrival time estimation.
+✅ Time-based fare variations.
+✅ Error handling for invalid inputs.
